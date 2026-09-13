@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#7659A8">
+  <meta name="description" content="대한민국 공휴일을 확인하고 날짜별 할 일을 관리하는 2026년 달력">
+  <title>2026 라벤더 플래너</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%237659A8'/%3E%3Cpath d='M18 24h28v24H18z' fill='white'/%3E%3Cpath d='M18 24h28v8H18z' fill='%23D9CCEE'/%3E%3Cpath d='M24 17v12M40 17v12' stroke='white' stroke-width='5' stroke-linecap='round'/%3E%3Ccircle cx='32' cy='40' r='4' fill='%237659A8'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">MY YEARLY PLANNER</p>
+        <h1>2026 Calendar</h1>
+      </div>
+      <button class="today-button" id="todayButton" type="button">오늘로 이동</button>
+    </header>
+
+    <section class="workspace" aria-label="2026년 달력과 할 일">
+      <div class="calendar-card">
+        <div class="calendar-toolbar">
+          <button class="icon-button" id="prevMonth" type="button" aria-label="이전 달">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <button class="month-picker" id="monthPicker" type="button" aria-label="월 선택 열기">
+            <span id="monthTitle">9월</span>
+            <span class="year-label">2026</span>
+          </button>
+          <button class="icon-button" id="nextMonth" type="button" aria-label="다음 달">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </div>
+
+        <div class="month-menu" id="monthMenu" hidden aria-label="월 선택">
+          <button type="button" data-month="0">1월</button><button type="button" data-month="1">2월</button>
+          <button type="button" data-month="2">3월</button><button type="button" data-month="3">4월</button>
+          <button type="button" data-month="4">5월</button><button type="button" data-month="5">6월</button>
+          <button type="button" data-month="6">7월</button><button type="button" data-month="7">8월</button>
+          <button type="button" data-month="8">9월</button><button type="button" data-month="9">10월</button>
+          <button type="button" data-month="10">11월</button><button type="button" data-month="11">12월</button>
+        </div>
+
+        <div class="weekdays" aria-hidden="true">
+          <span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span>
+        </div>
+        <div class="calendar-grid" id="calendarGrid" role="grid" aria-label="월간 달력"></div>
+      </div>
+
+      <aside class="todo-panel" aria-labelledby="selectedDateTitle">
+        <div class="todo-heading">
+          <div>
+            <p class="selected-date-sub" id="selectedDateSub">2026년</p>
+            <h2 id="selectedDateTitle">9월 13일 일요일</h2>
+            <p class="selected-holiday" id="selectedHoliday" hidden></p>
+          </div>
+          <div class="progress-ring" id="progressRing" aria-label="할 일 진행률">
+            <span id="progressText">0%</span>
+          </div>
+        </div>
+
+        <form class="todo-form" id="todoForm">
+          <label class="sr-only" for="todoInput">새 할 일</label>
+          <input id="todoInput" maxlength="80" autocomplete="off" placeholder="새 할 일을 입력하세요" required>
+          <button type="submit">추가</button>
+        </form>
+
+        <div class="todo-summary">
+          <span id="taskSummary">할 일이 없습니다</span>
+          <button id="clearCompleted" type="button" hidden>완료 항목 정리</button>
+        </div>
+
+        <ul class="todo-list" id="todoList" aria-live="polite"></ul>
+        <div class="empty-state" id="emptyState">
+          <span class="empty-line" aria-hidden="true"></span>
+          <p>아직 등록된 할 일이 없어요.</p>
+          <span>오늘 해야 할 일을 가볍게 적어보세요.</span>
+        </div>
+      </aside>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
